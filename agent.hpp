@@ -1,8 +1,8 @@
 #ifndef AGENT_HPP
 #define AGENT_HPP
-#include <SDL2/SDL.h>
 #include "random.hpp"
 #include "maze.hpp"
+#include <SDL2/SDL.h>
 
 class Agent {
     private:
