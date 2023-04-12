@@ -36,6 +36,7 @@ int main() {
         bear.move(keyState, environment, renderTarget);
         SDL_SetRenderDrawColor(renderTarget, 255, 255, 255, 255);
         SDL_RenderClear(renderTarget);
+        environment.render(renderTarget);
         bear.render(renderTarget);
         SDL_RenderPresent(renderTarget);
     }

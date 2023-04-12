@@ -2,33 +2,10 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include "wall.hpp"
+
 const int WIDTH = 960;
 const int HEIGHT = 640;
-
-class Line {
-    private:
-        std::vector<int> coordinates;
-    public:
-        static int startx;
-        static int starty;
-        static int endx;
-        static int endy;
-        Line(int a, int b, int c, int d) {
-            coordinates = std::vector<int>(4);
-            coordinates[0] = a;
-            coordinates[1] = b;
-            coordinates[2] = c;
-            coordinates[3] = d;
-        }
-        const std::vector<int>& getCoordinates() {
-            return coordinates;
-        }
-};
-
-int Line::startx = 0;
-int Line::starty = 0;
-int Line::endx = 0;
-int Line::endy = 0;
 
 int main(int argc, char* argv[]) {
     SDL_Init(SDL_INIT_VIDEO);
@@ -91,8 +68,8 @@ int main(int argc, char* argv[]) {
         }
         SDL_SetRenderDrawColor(renderTarget, 255, 255, 255, 255);
         SDL_RenderClear(renderTarget);
+        SDL_SetRenderDrawColor(renderTarget, 255, 0, 255, 255);
         for (auto l : mazeLines) {
-            SDL_SetRenderDrawColor(renderTarget, 255, 0, 255, 255);
             SDL_RenderDrawLine(renderTarget, l.getCoordinates()[0], l.getCoordinates()[1], l.getCoordinates()[2], l.getCoordinates()[3]);
         }
         if (creatingLine) {

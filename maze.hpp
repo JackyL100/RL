@@ -1,17 +1,11 @@
 #ifndef MAZE_HPP
 #define MAZE_HPP
 
+#include "wall.hpp"
 #include <SDL2/SDL.h>
 #include <vector>
 #include <fstream>
 #include <iostream>
-
-struct Line {
-    int startx;
-    int starty;
-    int endx;
-    int endy;
-};
 
 class Maze {
     private:
@@ -35,7 +29,10 @@ class Maze {
             }
         }
         void render(SDL_Renderer* target) {
-            
+            SDL_SetRenderDrawColor(target, 255, 0, 255, 255);
+            for (auto& wall : map) {
+                SDL_RenderDrawLine(target, wall.getCoordinates()[0], wall.getCoordinates()[1], wall.getCoordinates()[2], wall.getCoordinates()[3]);
+            }
         }
 };
 
